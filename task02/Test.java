@@ -8,29 +8,24 @@ public class Test {
 
     public static void main(String[] args) throws InterruptedException {
 
-        ArrayList<String> array = new ArrayList<>(20_000_000);
+        String[] array = new String[20_000_000];
 
-       WriterArray write = new WriterArray(0,10_000_000);
-       WriterArray write1 = new WriterArray(10_000_000,15_000_000);
-       WriterArray write2 = new WriterArray(15_000_000,20_000_000);
+        WriterArray array1 = new WriterArray(array);
+
+       WriterArray write = new WriterArray(0,5_000_000);
+       WriterArray write1 = new WriterArray(5_000_000,10_000_000);
+       WriterArray write2 = new WriterArray(10_000_000,15_000_000);
+       WriterArray write3 = new WriterArray(15_000_000,20_000_000);
 
         Thread thread = new Thread(write);
         Thread thread1 = new Thread(write1);
         Thread thread2 = new Thread(write2);
+        Thread tread3 = new Thread(write3);
 
-
-        long start = System.currentTimeMillis();
         thread.start();
-        //long stop = System.currentTimeMillis();
-        System.out.println(start);
-
-        long start1 = System.currentTimeMillis();
         thread1.start();
-        thread1.join();
-        System.out.println(start1);
         thread2.start();
-        thread2.join();
-
-
+        tread3.start();
+        thread.join();
     }
 }

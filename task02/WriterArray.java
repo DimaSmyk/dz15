@@ -1,6 +1,10 @@
 package selfwork15.task02;
 
 
+import java.util.Arrays;
+
+import static java.lang.String.valueOf;
+
 public class WriterArray implements Runnable{
 
     int startIndex;
@@ -11,11 +15,16 @@ public class WriterArray implements Runnable{
         this.end = end;
     }
 
-    String[] array = new String[20_000_000];
+    String[] array;
+
+
+    public WriterArray(String[] array) {
+        this.array = array;
+    }
 
     @Override
     public void run() {
-        //long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis();
         for (int i = startIndex; i < end; i++) {
             if(i % 5 == 0 && i % 3 ==0){
                 array[i] = "FizzBuzz";
@@ -27,14 +36,16 @@ public class WriterArray implements Runnable{
                 array[i] = "Buzz";
             }
             else {
-                array[i] = ";";
+
+                valueOf(array[i]);
             }
 
         }
-//        long stop = System.currentTimeMillis();
-//        System.out.println("start: " + start);
-//        System.out.println("stop: "+stop);
-//        System.out.println(stop-start);
+        long stop = System.currentTimeMillis();
+        //System.out.println("start: " + start);
+        //System.out.println("stop: "+stop);
+        System.out.println("Time tread: " + (stop-start));
+        System.out.println(Arrays.toString(array));
     }
 
 }
