@@ -9,16 +9,11 @@ public class WriterArray implements Runnable{
 
     int startIndex;
     int end;
-
-    public WriterArray(int startIndex, int end) {
-        this.startIndex = startIndex;
-        this.end = end;
-    }
-
     String[] array;
 
-
-    public WriterArray(String[] array) {
+    public WriterArray(int startIndex, int end, String[] array) {
+        this.startIndex = startIndex;
+        this.end = end;
         this.array = array;
     }
 
@@ -41,11 +36,11 @@ public class WriterArray implements Runnable{
             }
 
         }
-        long stop = System.currentTimeMillis();
+        //long stop = System.currentTimeMillis();
         //System.out.println("start: " + start);
         //System.out.println("stop: "+stop);
-        System.out.println("Time tread: " + (stop-start));
-        System.out.println(Arrays.toString(array));
+        //System.out.println("Time tread: " + (stop-start));
+        //System.out.println(Arrays.toString(array));
     }
 
 }

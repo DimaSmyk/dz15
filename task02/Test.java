@@ -1,21 +1,16 @@
 package selfwork15.task02;
 
-import selfwork15.task01.Writer;
-
-import java.util.ArrayList;
-
 public class Test {
 
     public static void main(String[] args) throws InterruptedException {
 
         String[] array = new String[20_000_000];
+        long start = System.currentTimeMillis();
 
-        WriterArray array1 = new WriterArray(array);
-
-       WriterArray write = new WriterArray(0,5_000_000);
-       WriterArray write1 = new WriterArray(5_000_000,10_000_000);
-       WriterArray write2 = new WriterArray(10_000_000,15_000_000);
-       WriterArray write3 = new WriterArray(15_000_000,20_000_000);
+       WriterArray write = new WriterArray(0,10_000_000,array);
+       WriterArray write1 = new WriterArray(5_000_000,10_000_000,array);
+       WriterArray write2 = new WriterArray(10_000_000,15_000_000,array);
+       WriterArray write3 = new WriterArray(10_000_000,20_000_000,array);
 
         Thread thread = new Thread(write);
         Thread thread1 = new Thread(write1);
@@ -26,6 +21,12 @@ public class Test {
         thread1.start();
         thread2.start();
         tread3.start();
+
         thread.join();
+        //thread1.join();
+        //thread2.join();
+        //tread3.join();
+        long stop = System.currentTimeMillis();
+        System.out.println("Time tread: " + (stop-start));
     }
 }
